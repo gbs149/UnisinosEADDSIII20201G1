@@ -1,0 +1,48 @@
+﻿Erro encontrado durante a clonagem do repositório remoto: Git failed with a fatal error.
+repository 'gbs149/UnisinosEADDSIII20201G1' does not exist
+
+Cloning into 'D:\Visual_Studio\GitHub'...
+POST git-upload-pack (175 bytes)
+Remote: Enumerating objects: 7, done.        
+Remote: Counting objects:  14% (1/7)        
+Remote: Counting objects:  28% (2/7)        
+Remote: Counting objects:  42% (3/7)        
+Remote: Counting objects:  57% (4/7)        
+Remote: Counting objects:  71% (5/7)        
+Remote: Counting objects:  85% (6/7)        
+Remote: Counting objects: 100% (7/7)        
+Remote: Counting objects: 100% (7/7), done.        
+Remote: Compressing objects:  14% (1/7)        
+Remote: Compressing objects:  28% (2/7)        
+Remote: Compressing objects:  42% (3/7)        
+Remote: Compressing objects:  57% (4/7)        
+Remote: Compressing objects:  71% (5/7)        
+Remote: Compressing objects:  85% (6/7)        
+Remote: Compressing objects: 100% (7/7)        
+Remote: Compressing objects: 100% (7/7), done.        
+Remote: Total 7 (delta 1), reused 0 (delta 0), pack-reused 0        
+Abrindo repositórios:
+D:\Visual_Studio\GitHub
+Confirmar 4bf93878 criado localmente no repositório D:\Visual_Studio\GitHub
+From https://github.com/gbs149/UnisinosEADDSIII20201G1
+ = [up to date]      master     -> origin/master
+Remote: Permission to gbs149/UnisinosEADDSIII20201G1.git denied to brunogabrieldeoliveira.
+Erro encontrado durante a publicação para o repositório remoto: Git failed with a fatal error.
+unable to access 'https://github.com/gbs149/UnisinosEADDSIII20201G1/': The requested URL returned error: 403
+Pushing to https://github.com/gbs149/UnisinosEADDSIII20201G1
+
+From https://github.com/gbs149/UnisinosEADDSIII20201G1
+ = [up to date]      master     -> origin/master
+Remote: Permission to gbs149/UnisinosEADDSIII20201G1.git denied to brunogabrieldeoliveira.
+Erro encontrado durante a publicação para o repositório remoto: Git failed with a fatal error.
+unable to access 'https://github.com/gbs149/UnisinosEADDSIII20201G1/': The requested URL returned error: 403
+Pushing to https://github.com/gbs149/UnisinosEADDSIII20201G1
+
+Confirmar 5bb5b341 criado localmente no repositório D:\Visual_Studio\GitHub
+From https://github.com/gbs149/UnisinosEADDSIII20201G1
+ = [up to date]      master     -> origin/master
+Remote: Permission to gbs149/UnisinosEADDSIII20201G1.git denied to brunogabrieldeoliveira.
+Erro encontrado durante a publicação para o repositório remoto: Git failed with a fatal error.
+unable to access 'https://github.com/gbs149/UnisinosEADDSIII20201G1/': The requested URL returned error: 403
+Pushing to https://github.com/gbs149/UnisinosEADDSIII20201G1
+
