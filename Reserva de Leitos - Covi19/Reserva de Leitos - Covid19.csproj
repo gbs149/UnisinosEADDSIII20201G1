@@ -82,6 +82,24 @@
     <Compile Include="forms\form_ini.Designer.cs">
       <DependentUpon>form_ini.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\form_loc_cidades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\form_loc_cidades.designer.cs">
+      <DependentUpon>form_loc_cidades.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\form_loc_leitos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\form_loc_leitos.designer.cs">
+      <DependentUpon>form_loc_leitos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\form_loc_paciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\form_loc_paciente.designer.cs">
+      <DependentUpon>form_loc_paciente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="forms\form_cad_exc_hosp.resx">
@@ -93,6 +111,15 @@
     <EmbeddedResource Include="forms\form_ini.resx">
       <DependentUpon>form_ini.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\form_loc_cidades.resx">
+      <DependentUpon>form_loc_cidades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\form_loc_leitos.resx">
+      <DependentUpon>form_loc_leitos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\form_loc_paciente.resx">
+      <DependentUpon>form_loc_paciente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -101,6 +128,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -124,6 +152,27 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="class\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\redCross.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\redCross2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OK_Ico.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lupa2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
