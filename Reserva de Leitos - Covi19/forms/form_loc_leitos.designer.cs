@@ -28,11 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.grpTipo = new System.Windows.Forms.GroupBox();
-            this.rbLiberacao = new System.Windows.Forms.RadioButton();
-            this.rbAlocacao = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.btnLocCPF = new System.Windows.Forms.Button();
             this.btnLocCidade = new System.Windows.Forms.Button();
@@ -49,14 +46,12 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnConfirmar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            this.grpTipo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.grpTipo);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btnLocCPF);
             this.panel1.Controls.Add(this.btnLocCidade);
@@ -67,48 +62,15 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(780, 77);
+            this.panel1.Size = new System.Drawing.Size(804, 55);
             this.panel1.TabIndex = 1;
-            // 
-            // grpTipo
-            // 
-            this.grpTipo.Controls.Add(this.rbLiberacao);
-            this.grpTipo.Controls.Add(this.rbAlocacao);
-            this.grpTipo.Location = new System.Drawing.Point(12, 10);
-            this.grpTipo.Name = "grpTipo";
-            this.grpTipo.Size = new System.Drawing.Size(119, 57);
-            this.grpTipo.TabIndex = 8;
-            this.grpTipo.TabStop = false;
-            this.grpTipo.Text = "Tipo";
-            // 
-            // rbLiberacao
-            // 
-            this.rbLiberacao.AutoSize = true;
-            this.rbLiberacao.Location = new System.Drawing.Point(6, 35);
-            this.rbLiberacao.Name = "rbLiberacao";
-            this.rbLiberacao.Size = new System.Drawing.Size(72, 17);
-            this.rbLiberacao.TabIndex = 1;
-            this.rbLiberacao.Text = "Liberação";
-            this.rbLiberacao.UseVisualStyleBackColor = true;
-            // 
-            // rbAlocacao
-            // 
-            this.rbAlocacao.AutoSize = true;
-            this.rbAlocacao.Checked = true;
-            this.rbAlocacao.Location = new System.Drawing.Point(6, 15);
-            this.rbAlocacao.Name = "rbAlocacao";
-            this.rbAlocacao.Size = new System.Drawing.Size(70, 17);
-            this.rbAlocacao.TabIndex = 0;
-            this.rbAlocacao.TabStop = true;
-            this.rbAlocacao.Text = "Alocação";
-            this.rbAlocacao.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label1.Location = new System.Drawing.Point(544, 25);
+            this.label1.Location = new System.Drawing.Point(409, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(85, 13);
             this.label1.TabIndex = 7;
@@ -117,7 +79,7 @@
             // btnLocCPF
             // 
             this.btnLocCPF.Image = global::Reserva_de_Leitos___Covi19.Properties.Resources.lupa2;
-            this.btnLocCPF.Location = new System.Drawing.Point(355, 20);
+            this.btnLocCPF.Location = new System.Drawing.Point(220, 16);
             this.btnLocCPF.Name = "btnLocCPF";
             this.btnLocCPF.Size = new System.Drawing.Size(25, 22);
             this.btnLocCPF.TabIndex = 6;
@@ -127,7 +89,7 @@
             // btnLocCidade
             // 
             this.btnLocCidade.Image = global::Reserva_de_Leitos___Covi19.Properties.Resources.lupa2;
-            this.btnLocCidade.Location = new System.Drawing.Point(513, 20);
+            this.btnLocCidade.Location = new System.Drawing.Point(378, 16);
             this.btnLocCidade.Name = "btnLocCidade";
             this.btnLocCidade.Size = new System.Drawing.Size(25, 22);
             this.btnLocCidade.TabIndex = 5;
@@ -138,7 +100,7 @@
             // 
             this.lbCidade.AutoSize = true;
             this.lbCidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCidade.Location = new System.Drawing.Point(411, 25);
+            this.lbCidade.Location = new System.Drawing.Point(276, 21);
             this.lbCidade.Name = "lbCidade";
             this.lbCidade.Size = new System.Drawing.Size(46, 13);
             this.lbCidade.TabIndex = 4;
@@ -146,7 +108,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(457, 21);
+            this.textBox1.Location = new System.Drawing.Point(322, 17);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(55, 20);
             this.textBox1.TabIndex = 3;
@@ -157,7 +119,7 @@
             // 
             this.lbCPF.AutoSize = true;
             this.lbCPF.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCPF.Location = new System.Drawing.Point(147, 25);
+            this.lbCPF.Location = new System.Drawing.Point(12, 21);
             this.lbCPF.Name = "lbCPF";
             this.lbCPF.Size = new System.Drawing.Size(102, 13);
             this.lbCPF.TabIndex = 2;
@@ -165,7 +127,7 @@
             // 
             // edtCPF
             // 
-            this.edtCPF.Location = new System.Drawing.Point(255, 21);
+            this.edtCPF.Location = new System.Drawing.Point(120, 17);
             this.edtCPF.Mask = "000.000.000-00";
             this.edtCPF.Name = "edtCPF";
             this.edtCPF.Size = new System.Drawing.Size(100, 20);
@@ -179,11 +141,11 @@
             this.NOMEHOSPITAL,
             this.QTDLEITOS});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 77);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 55);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 50;
-            this.dataGridView1.Size = new System.Drawing.Size(780, 403);
+            this.dataGridView1.Size = new System.Drawing.Size(804, 425);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -202,8 +164,8 @@
             // 
             // QTDLEITOS
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.QTDLEITOS.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.QTDLEITOS.DefaultCellStyle = dataGridViewCellStyle2;
             this.QTDLEITOS.HeaderText = "LEITOS DISPONÍVEIS";
             this.QTDLEITOS.Name = "QTDLEITOS";
             // 
@@ -214,7 +176,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 417);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(780, 63);
+            this.panel2.Size = new System.Drawing.Size(804, 63);
             this.panel2.TabIndex = 3;
             // 
             // btnCancelar
@@ -224,7 +186,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.Image = global::Reserva_de_Leitos___Covi19.Properties.Resources.cancel2;
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCancelar.Location = new System.Drawing.Point(664, 13);
+            this.btnCancelar.Location = new System.Drawing.Point(688, 13);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(104, 38);
             this.btnCancelar.TabIndex = 6;
@@ -240,7 +202,7 @@
             this.btnConfirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirmar.Image = global::Reserva_de_Leitos___Covi19.Properties.Resources.OK_Ico;
             this.btnConfirmar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnConfirmar.Location = new System.Drawing.Point(544, 13);
+            this.btnConfirmar.Location = new System.Drawing.Point(568, 13);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(114, 38);
             this.btnConfirmar.TabIndex = 5;
@@ -253,7 +215,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(780, 480);
+            this.ClientSize = new System.Drawing.Size(804, 480);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
@@ -262,8 +224,6 @@
             this.Text = "Administração de Leitos";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.grpTipo.ResumeLayout(false);
-            this.grpTipo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -287,9 +247,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NOMEHOSPITAL;
         private System.Windows.Forms.DataGridViewTextBoxColumn QTDLEITOS;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox grpTipo;
-        private System.Windows.Forms.RadioButton rbLiberacao;
-        private System.Windows.Forms.RadioButton rbAlocacao;
     }
 }
 

@@ -50,6 +50,9 @@
     <StartupObject>
     </StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>bed.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -94,6 +97,12 @@
     <Compile Include="forms\form_loc_leitos.designer.cs">
       <DependentUpon>form_loc_leitos.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\form_loc_hospital .cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\form_loc_hospital .designer.cs">
+      <DependentUpon>form_loc_hospital .cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\form_loc_paciente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\form_loc_leitos.resx">
       <DependentUpon>form_loc_leitos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\form_loc_hospital .resx">
+      <DependentUpon>form_loc_hospital .cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\form_loc_paciente.resx">
       <DependentUpon>form_loc_paciente.cs</DependentUpon>
@@ -173,6 +185,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\lupa2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bed.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
