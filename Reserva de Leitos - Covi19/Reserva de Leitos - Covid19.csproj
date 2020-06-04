@@ -82,6 +82,48 @@
     <Compile Include="forms\form_ini.Designer.cs">
       <DependentUpon>form_ini.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\form_msn1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\form_msn1.Designer.cs">
+      <DependentUpon>form_msn1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\form_msn2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\form_msn2.Designer.cs">
+      <DependentUpon>form_msn2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\form_msn3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\form_msn3.Designer.cs">
+      <DependentUpon>form_msn3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\form_msn4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\form_msn4.Designer.cs">
+      <DependentUpon>form_msn4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\form_msn5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\form_msn5.Designer.cs">
+      <DependentUpon>form_msn5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\form_msn6.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\form_msn6.Designer.cs">
+      <DependentUpon>form_msn6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\form_msn7cs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\form_msn7cs.Designer.cs">
+      <DependentUpon>form_msn7cs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="forms\form_cad_exc_hosp.resx">
@@ -92,6 +134,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\form_ini.resx">
       <DependentUpon>form_ini.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\form_msn1.resx">
+      <DependentUpon>form_msn1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\form_msn2.resx">
+      <DependentUpon>form_msn2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\form_msn3.resx">
+      <DependentUpon>form_msn3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\form_msn4.resx">
+      <DependentUpon>form_msn4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\form_msn5.resx">
+      <DependentUpon>form_msn5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\form_msn6.resx">
+      <DependentUpon>form_msn6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\form_msn7cs.resx">
+      <DependentUpon>form_msn7cs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

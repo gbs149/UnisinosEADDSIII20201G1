@@ -33,5 +33,10 @@ namespace Reserva_de_Leitos___Covi19.forms
             form_cad_exc_hosp frm2 = new form_cad_exc_hosp();
             frm2.Show();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
