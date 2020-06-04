@@ -24,7 +24,7 @@ namespace Reserva_de_Leitos___Covi19.forms
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            Close();
+            Close()  ;
         }
 
         private void button4_Click(object sender, EventArgs e)
