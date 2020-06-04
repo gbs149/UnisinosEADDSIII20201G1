@@ -67,6 +67,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="class\bll\bll_metodos.cs" />
+    <Compile Include="class\dal\AcessoBancoDados.cs" />
+    <Compile Include="class\dto\dto_cad.cs" />
     <Compile Include="forms\form_cad_exc_hosp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -216,9 +219,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="class\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\sick.png" />
   </ItemGroup>
