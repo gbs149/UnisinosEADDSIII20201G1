@@ -36,7 +36,8 @@ namespace Reserva_de_Leitos___Covi19.forms
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            form_loc_leitos frm3 = new form_loc_leitos();
+            frm3.Show();
         }
     }
 }

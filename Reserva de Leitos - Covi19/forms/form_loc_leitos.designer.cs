@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.btnLocCPF = new System.Windows.Forms.Button();
@@ -62,7 +62,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(804, 55);
+            this.panel1.Size = new System.Drawing.Size(780, 60);
             this.panel1.TabIndex = 1;
             // 
             // label1
@@ -70,7 +70,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label1.Location = new System.Drawing.Point(418, 21);
+            this.label1.Location = new System.Drawing.Point(419, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(85, 13);
             this.label1.TabIndex = 7;
@@ -79,7 +79,7 @@
             // btnLocCPF
             // 
             this.btnLocCPF.Image = global::Reserva_de_Leitos___Covi19.Properties.Resources.lupa2;
-            this.btnLocCPF.Location = new System.Drawing.Point(220, 16);
+            this.btnLocCPF.Location = new System.Drawing.Point(230, 20);
             this.btnLocCPF.Name = "btnLocCPF";
             this.btnLocCPF.Size = new System.Drawing.Size(25, 22);
             this.btnLocCPF.TabIndex = 6;
@@ -89,7 +89,7 @@
             // btnLocCidade
             // 
             this.btnLocCidade.Image = global::Reserva_de_Leitos___Covi19.Properties.Resources.lupa2;
-            this.btnLocCidade.Location = new System.Drawing.Point(378, 16);
+            this.btnLocCidade.Location = new System.Drawing.Point(388, 20);
             this.btnLocCidade.Name = "btnLocCidade";
             this.btnLocCidade.Size = new System.Drawing.Size(25, 22);
             this.btnLocCidade.TabIndex = 5;
@@ -100,7 +100,7 @@
             // 
             this.lbCidade.AutoSize = true;
             this.lbCidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCidade.Location = new System.Drawing.Point(276, 21);
+            this.lbCidade.Location = new System.Drawing.Point(286, 25);
             this.lbCidade.Name = "lbCidade";
             this.lbCidade.Size = new System.Drawing.Size(46, 13);
             this.lbCidade.TabIndex = 4;
@@ -108,7 +108,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(322, 17);
+            this.textBox1.Location = new System.Drawing.Point(332, 21);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(55, 20);
             this.textBox1.TabIndex = 3;
@@ -119,7 +119,7 @@
             // 
             this.lbCPF.AutoSize = true;
             this.lbCPF.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCPF.Location = new System.Drawing.Point(12, 21);
+            this.lbCPF.Location = new System.Drawing.Point(22, 25);
             this.lbCPF.Name = "lbCPF";
             this.lbCPF.Size = new System.Drawing.Size(102, 13);
             this.lbCPF.TabIndex = 2;
@@ -127,7 +127,7 @@
             // 
             // edtCPF
             // 
-            this.edtCPF.Location = new System.Drawing.Point(120, 17);
+            this.edtCPF.Location = new System.Drawing.Point(130, 21);
             this.edtCPF.Mask = "000.000.000-00";
             this.edtCPF.Name = "edtCPF";
             this.edtCPF.Size = new System.Drawing.Size(100, 20);
@@ -141,11 +141,11 @@
             this.NOMEHOSPITAL,
             this.QTDLEITOS});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 55);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 60);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 50;
-            this.dataGridView1.Size = new System.Drawing.Size(804, 425);
+            this.dataGridView1.Size = new System.Drawing.Size(780, 420);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -164,8 +164,8 @@
             // 
             // QTDLEITOS
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.QTDLEITOS.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.QTDLEITOS.DefaultCellStyle = dataGridViewCellStyle1;
             this.QTDLEITOS.HeaderText = "LEITOS DISPONÍVEIS";
             this.QTDLEITOS.Name = "QTDLEITOS";
             // 
@@ -176,7 +176,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 417);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(804, 63);
+            this.panel2.Size = new System.Drawing.Size(780, 63);
             this.panel2.TabIndex = 3;
             // 
             // btnCancelar
@@ -186,7 +186,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.Image = global::Reserva_de_Leitos___Covi19.Properties.Resources.cancel2;
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCancelar.Location = new System.Drawing.Point(688, 13);
+            this.btnCancelar.Location = new System.Drawing.Point(664, 13);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(104, 38);
             this.btnCancelar.TabIndex = 6;
@@ -202,7 +202,7 @@
             this.btnConfirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirmar.Image = global::Reserva_de_Leitos___Covi19.Properties.Resources.OK_Ico;
             this.btnConfirmar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnConfirmar.Location = new System.Drawing.Point(568, 13);
+            this.btnConfirmar.Location = new System.Drawing.Point(544, 13);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(114, 38);
             this.btnConfirmar.TabIndex = 5;
@@ -215,7 +215,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(804, 480);
+            this.ClientSize = new System.Drawing.Size(780, 480);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
