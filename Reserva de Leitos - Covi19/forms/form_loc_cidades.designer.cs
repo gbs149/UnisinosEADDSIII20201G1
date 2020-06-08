@@ -28,11 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvCidades = new System.Windows.Forms.DataGridView();
-            this.CODIGO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NOME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnLocCidade = new System.Windows.Forms.Button();
             this.lbNOme = new System.Windows.Forms.Label();
@@ -43,39 +39,18 @@
             // 
             // dgvCidades
             // 
+            this.dgvCidades.AllowUserToAddRows = false;
+            this.dgvCidades.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgvCidades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCidades.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CODIGO,
-            this.NOME,
-            this.UF});
             this.dgvCidades.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCidades.Location = new System.Drawing.Point(0, 55);
             this.dgvCidades.Name = "dgvCidades";
             this.dgvCidades.RowHeadersVisible = false;
             this.dgvCidades.RowHeadersWidth = 50;
+            this.dgvCidades.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCidades.Size = new System.Drawing.Size(423, 395);
             this.dgvCidades.TabIndex = 4;
-            // 
-            // CODIGO
-            // 
-            this.CODIGO.HeaderText = "CÓDIGO";
-            this.CODIGO.Name = "CODIGO";
-            this.CODIGO.Width = 60;
-            // 
-            // NOME
-            // 
-            this.NOME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NOME.FillWeight = 50F;
-            this.NOME.HeaderText = "NOME";
-            this.NOME.Name = "NOME";
-            // 
-            // UF
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.UF.DefaultCellStyle = dataGridViewCellStyle1;
-            this.UF.HeaderText = "UF";
-            this.UF.Name = "UF";
-            this.UF.Width = 30;
+            this.dgvCidades.DoubleClick += new System.EventHandler(this.dgvCidades_DoubleClick);
             // 
             // panel1
             // 
@@ -96,6 +71,7 @@
             this.btnLocCidade.Size = new System.Drawing.Size(25, 22);
             this.btnLocCidade.TabIndex = 5;
             this.btnLocCidade.UseVisualStyleBackColor = true;
+            this.btnLocCidade.Click += new System.EventHandler(this.btnLocCidade_Click);
             // 
             // lbNOme
             // 
@@ -124,6 +100,7 @@
             this.Name = "form_loc_cidades";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Localizar Cidade";
+            this.Load += new System.EventHandler(this.form_loc_cidades_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCidades)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -138,8 +115,5 @@
         private System.Windows.Forms.Button btnLocCidade;
         private System.Windows.Forms.Label lbNOme;
         private System.Windows.Forms.TextBox edtNome;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CODIGO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NOME;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UF;
     }
 }

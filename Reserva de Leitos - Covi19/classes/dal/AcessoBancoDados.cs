@@ -9,7 +9,7 @@ using MySql.Data.MySqlClient;
 
 namespace ControleEquipamentos.Code.DAL
 {
-    class AcessoBancoDados
+    public class AcessoBancoDados
     {
         private MySqlConnection conn;
         private DataTable data;
@@ -17,10 +17,10 @@ namespace ControleEquipamentos.Code.DAL
         private MySqlDataReader dr;
         private MySqlCommandBuilder cb;
 
-        private String server = "192.168.0.8";
+        private String server = "localhost";
         private String user = "root";
-        private String password = "12qwaszx!@";
-        private String database = "equipamentos";
+        private String password = "1234";
+        private String database = "teste";
 
         public void conectar()
         {   //ini metodo conectar              
