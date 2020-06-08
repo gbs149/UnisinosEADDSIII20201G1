@@ -115,10 +115,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="classes\bll\bll_cad_cidade.cs" />
     <Compile Include="classes\bll\bll_metodos.cs" />
     <Compile Include="classes\bll\bll_cad_paciente.cs" />
     <Compile Include="classes\dal\AcessoBancoDados.cs" />
     <Compile Include="classes\dto\dto_cad.cs" />
+    <Compile Include="classes\dto\dto_cad_cidade.cs" />
     <Compile Include="classes\dto\dto_cad_paciente.cs" />
     <Compile Include="forms\form_cad_exc_hosp.cs">
       <SubType>Form</SubType>

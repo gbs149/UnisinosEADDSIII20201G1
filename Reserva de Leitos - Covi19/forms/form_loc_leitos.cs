@@ -46,7 +46,7 @@ namespace Reserva_de_Leitos___Covi19.forms
             frmLocCidades.ShowDialog();
             if (frmLocCidades.DialogResult == DialogResult.OK)
             {
-                edtCidade.Text = frmLocCidades.Codigo.ToString();
+                edtCidade.Text = frmLocCidades.Cidade.Codigo.ToString();
                 if (CarregarCidade(edtCidade.Text))
                 {
                     CarregarHospitais(lbCidade.Text);

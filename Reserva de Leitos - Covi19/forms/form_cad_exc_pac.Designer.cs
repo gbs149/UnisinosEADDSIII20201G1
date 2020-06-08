@@ -35,7 +35,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbGenero = new System.Windows.Forms.ComboBox();
             this.edtNomeCidade = new System.Windows.Forms.TextBox();
             this.edtNome = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -44,20 +44,20 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.edtIdade = new System.Windows.Forms.TextBox();
+            this.dtNascimento = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.edtIdade);
+            this.groupBox1.Controls.Add(this.dtNascimento);
             this.groupBox1.Controls.Add(this.edtCPF);
             this.groupBox1.Controls.Add(this.btnLocCidade);
             this.groupBox1.Controls.Add(this.btnLocPaciente);
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.cbGenero);
             this.groupBox1.Controls.Add(this.edtNomeCidade);
             this.groupBox1.Controls.Add(this.edtNome);
             this.groupBox1.Controls.Add(this.label5);
@@ -78,10 +78,10 @@
             // 
             // edtCPF
             // 
-            this.edtCPF.Location = new System.Drawing.Point(104, 70);
+            this.edtCPF.Location = new System.Drawing.Point(104, 68);
             this.edtCPF.Mask = "000.000.000-00";
             this.edtCPF.Name = "edtCPF";
-            this.edtCPF.Size = new System.Drawing.Size(141, 26);
+            this.edtCPF.Size = new System.Drawing.Size(182, 26);
             this.edtCPF.TabIndex = 24;
             this.edtCPF.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
@@ -98,7 +98,7 @@
             // btnLocPaciente
             // 
             this.btnLocPaciente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLocPaciente.Location = new System.Drawing.Point(271, 72);
+            this.btnLocPaciente.Location = new System.Drawing.Point(292, 71);
             this.btnLocPaciente.Margin = new System.Windows.Forms.Padding(2);
             this.btnLocPaciente.Name = "btnLocPaciente";
             this.btnLocPaciente.Size = new System.Drawing.Size(57, 23);
@@ -140,17 +140,19 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // comboBox1
+            // cbGenero
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cbGenero.FormattingEnabled = true;
+            this.cbGenero.Items.AddRange(new object[] {
             "Masculino",
-            "Feminino"});
-            this.comboBox1.Location = new System.Drawing.Point(104, 101);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(141, 28);
-            this.comboBox1.TabIndex = 3;
+            "Feminino",
+            "Outro",
+            "Não Informado"});
+            this.cbGenero.Location = new System.Drawing.Point(104, 99);
+            this.cbGenero.Margin = new System.Windows.Forms.Padding(2);
+            this.cbGenero.Name = "cbGenero";
+            this.cbGenero.Size = new System.Drawing.Size(182, 28);
+            this.cbGenero.TabIndex = 3;
             // 
             // edtNomeCidade
             // 
@@ -185,9 +187,9 @@
             this.label4.Location = new System.Drawing.Point(22, 135);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 20);
+            this.label4.Size = new System.Drawing.Size(132, 20);
             this.label4.TabIndex = 18;
-            this.label4.Text = "Idade";
+            this.label4.Text = "Dt. Nascimento";
             // 
             // label3
             // 
@@ -230,12 +232,14 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // edtIdade
+            // dtNascimento
             // 
-            this.edtIdade.Location = new System.Drawing.Point(104, 132);
-            this.edtIdade.Name = "edtIdade";
-            this.edtIdade.Size = new System.Drawing.Size(74, 26);
-            this.edtIdade.TabIndex = 25;
+            this.dtNascimento.CustomFormat = "dd/MM/yyyy";
+            this.dtNascimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtNascimento.Location = new System.Drawing.Point(155, 130);
+            this.dtNascimento.Name = "dtNascimento";
+            this.dtNascimento.Size = new System.Drawing.Size(131, 26);
+            this.dtNascimento.TabIndex = 25;
             // 
             // form_cadastro_paciente
             // 
@@ -247,7 +251,6 @@
             this.Name = "form_cadastro_paciente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gerencia de Paciente";
-            this.Load += new System.EventHandler(this.form_cadastro_paciente_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -257,7 +260,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbGenero;
         private System.Windows.Forms.TextBox edtNomeCidade;
         private System.Windows.Forms.TextBox edtNome;
         private System.Windows.Forms.Label label5;
@@ -272,7 +275,7 @@
         private System.Windows.Forms.Button btnLocPaciente;
         private System.Windows.Forms.Button btnLocCidade;
         private System.Windows.Forms.MaskedTextBox edtCPF;
-        private System.Windows.Forms.TextBox edtIdade;
+        private System.Windows.Forms.DateTimePicker dtNascimento;
     }
 }
 

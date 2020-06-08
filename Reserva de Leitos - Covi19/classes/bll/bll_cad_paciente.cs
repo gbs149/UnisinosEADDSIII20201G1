@@ -21,7 +21,7 @@ namespace Reserva_de_Leitos___Covi19.classes.bll
             {
                 bd = new AcessoBancoDados();
                 bd.conectar();
-                string comando = $"INSERT INTO Paciente(Nome,CPF,Sexo,Idade,Cidade,CodigoCidade) VALUES('{paciente.Nome}', '{paciente.CPF}', '{paciente.Sexo}', {paciente.Idade}, '', {paciente.Cidade})";
+                string comando = $"INSERT INTO Paciente(NOME, CPF, GENERO, DATA_NASCIMENTO, CIDADE_CODIGO) VALUES('{paciente.Nome}', '{paciente.CPF}', '{paciente.Genero}', '{paciente.DataNascimento.ToString("yyyy-MM-dd H:mm:ss")}',  {paciente.Cidade})";
                 bd.ExecutarComandoSQL(comando);
                 resultado = true;
             }   
@@ -58,8 +58,12 @@ namespace Reserva_de_Leitos___Covi19.classes.bll
                 var dtPaciente =  bd.RetDataTable(comando);
                 foreach (DataRow linha in dtPaciente.Rows)
                 {
+                    paciente.Codigo = Convert.ToInt32(linha["Codigo"]);
                     paciente.Nome = linha["Nome"].ToString();
                     paciente.CPF = linha["CPF"].ToString();
+                    paciente.DataNascimento = Convert.ToDateTime(linha["DATA_NASCIMENTO"].ToString());
+                    paciente.Genero = Convert.ToChar(linha["GENERO"].ToString());
+                    paciente.Cidade = Convert.ToInt32(linha["CIDADE_CODIGO"]);
                 }
             }
             catch (Exception ex)

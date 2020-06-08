@@ -1,4 +1,6 @@
 ﻿using ControleEquipamentos.Code.DAL;
+using Reserva_de_Leitos___Covi19.classes.bll;
+using Reserva_de_Leitos___Covi19.classes.dto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,9 +15,7 @@ namespace Reserva_de_Leitos___Covi19.forms
 {
     public partial class form_loc_cidades : Form
     {
-        public int Codigo { get; private set; }
-        public String Nome { get; private set; }
-
+        public dto_cad_cidade Cidade = new dto_cad_cidade();
         private AcessoBancoDados AcessoBanco;
         private DataTable DtCidades;
 
@@ -28,22 +28,22 @@ namespace Reserva_de_Leitos___Covi19.forms
         {
             AcessoBanco = new AcessoBancoDados();
             AcessoBanco.conectar();
-            CarregarCidades();
+            DtCidades = bll_cad_cidade.CarregarCidades(); 
             dgvCidades.DataSource = DtCidades;
         }
 
-        private bool CarregarCidades()
-        {
-            bool resultado = false;
-            String sql = $@"Select Codigo, Nome, UF From Cidade";
-            DtCidades = AcessoBanco.RetDataTable(sql);
-            DtCidades.CaseSensitive = false;
+        //private bool CarregarCidades()
+        //{
+        //    bool resultado = false;
+        //    String sql = $@"Select Codigo, Nome, UF From Cidade";
+        //    DtCidades = AcessoBanco.RetDataTable(sql);
+        //    DtCidades.CaseSensitive = false;
 
-            if (DtCidades.Rows.Count > 0) 
-                resultado = true;
+        //    if (DtCidades.Rows.Count > 0) 
+        //        resultado = true;
 
-            return resultado;
-        }
+        //    return resultado;
+        //}
 
         private void btnLocCidade_Click(object sender, EventArgs e)
         {
@@ -65,7 +65,8 @@ namespace Reserva_de_Leitos___Covi19.forms
         {
             if (dgvCidades.Rows.Count > 0)
             {
-                Codigo = Convert.ToInt32(dgvCidades.CurrentRow.Cells["Codigo"].Value);
+                int codigo = Convert.ToInt32(dgvCidades.CurrentRow.Cells["Codigo"].Value);
+                Cidade = bll_cad_cidade.Selecionar(codigo);
                 DialogResult = DialogResult.OK;
                 this.Close();
             }

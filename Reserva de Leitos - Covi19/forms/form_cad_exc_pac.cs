@@ -15,7 +15,8 @@ namespace Reserva_de_Leitos___Covi19
 {
     public partial class form_cadastro_paciente : Form
     {
-        dto_cad_paciente paciente = new dto_cad_paciente();
+        dto_cad_paciente Paciente = new dto_cad_paciente();
+        dto_cad_cidade Cidade = new dto_cad_cidade();
 
         private int CodigoCidade { get; set; }
 
@@ -25,27 +26,21 @@ namespace Reserva_de_Leitos___Covi19
 
         }
 
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void button3_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void form_cadastro_paciente_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            CadastrarPaciente();
-            var resultado = bll_cad_paciente.Incluir(paciente);
+            AtualizarCadPaciente();
+            var resultado = bll_cad_paciente.Incluir(Paciente);
 
             if (resultado == false) return;
+
+
             LimparTela();
         }
 
@@ -53,14 +48,13 @@ namespace Reserva_de_Leitos___Covi19
         {
             edtNome.Text = "";
             edtCPF.Text = "";
-            edtIdade.Text = "";
-            CodigoCidade = 0;
+            cbGenero.Text = "";
+            dtNascimento.Value = DateTime.Now.Date;
+            edtNomeCidade.Text = "";
+            Paciente = new dto_cad_paciente();
+            Cidade = new dto_cad_cidade();
         }
 
-        private void button6_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -85,18 +79,18 @@ namespace Reserva_de_Leitos___Covi19
             frmLocCidades.ShowDialog();
             if (frmLocCidades.DialogResult == DialogResult.OK)
             {
-                CodigoCidade = frmLocCidades.Codigo;
-                edtNomeCidade.Text = frmLocCidades.Nome;
+                Cidade = frmLocCidades.Cidade;
+                edtNomeCidade.Text = Cidade.Nome;
             }
         }
 
-        private void CadastrarPaciente()
+        private void AtualizarCadPaciente()
         {
-            paciente.Nome = edtNome.Text;
-            paciente.CPF = edtCPF.Text;
-            paciente.Idade = 20;//dtNascimento.Value.Date;
-            paciente.Sexo = "Masculino";
-            paciente.Cidade = 397;
+            Paciente.Nome = edtNome.Text;
+            Paciente.CPF = edtCPF.Text;
+            Paciente.DataNascimento = dtNascimento.Value.Date;
+            Paciente.Genero = Convert.ToChar(cbGenero.Text.Substring(0,1));
+            Paciente.Cidade = Cidade.Codigo;
         }
 
         private void ValidarDados()
@@ -107,17 +101,46 @@ namespace Reserva_de_Leitos___Covi19
                 edtNome.Focus();
                 return;
             }
+
+            if (edtCPF.Text.Trim() == "")
+            {
+                MessageBox.Show("O Paciente não pode ficar com o CPF em branco!");
+                edtCPF.Focus();
+                return;
+            }
+
+            if (edtNomeCidade.Text.Trim() == "")
+            {
+                MessageBox.Show("O Paciente não pode ficar com a Cidade em branco!");
+                edtNomeCidade.Focus();
+                return;
+            }
         }
 
         private void btnLocPaciente_Click(object sender, EventArgs e)
         {
-            paciente = bll_cad_paciente.Selecionar(edtCPF.Text);
+            Paciente = bll_cad_paciente.Selecionar(edtCPF.Text);
 
-            if (paciente != null)
+            if (Paciente != null)
             {
-                edtNome.Text = paciente.Nome;
+                edtNome.Text = Paciente.Nome;
+                edtCPF.Text  = Paciente.CPF;
+
+                switch (Paciente.Genero)
+                {
+                    case 'M': cbGenero.Text = "Masculino"; break;
+                    case 'F': cbGenero.Text = "Feminino"; break;
+                    case 'O': cbGenero.Text = "Outros"; break;
+                    case 'N': cbGenero.Text = "Não Informado"; break;
+                    default:  cbGenero.Text = "Masculino"; break;
+                }
+
+                dtNascimento.Value = Paciente.DataNascimento;
+                Cidade = bll_cad_cidade.Selecionar(Paciente.Cidade);
+                edtNomeCidade.Text = Cidade.Nome;
             }
         }
+
     }
 
 

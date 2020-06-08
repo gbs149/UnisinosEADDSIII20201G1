@@ -20,7 +20,7 @@ namespace ControleEquipamentos.Code.DAL
         private String server = "localhost";
         private String user = "root";
         private String password = "1234";
-        private String database = "teste";
+        private String database = "prlcovid19";
 
         public void conectar()
         {   //ini metodo conectar              
