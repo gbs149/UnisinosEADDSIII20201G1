@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dtNascimento = new System.Windows.Forms.DateTimePicker();
             this.edtCPF = new System.Windows.Forms.MaskedTextBox();
             this.btnLocCidade = new System.Windows.Forms.Button();
             this.btnLocPaciente = new System.Windows.Forms.Button();
@@ -44,7 +45,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.dtNascimento = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,13 +76,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Gerenciamento do cadastro de pacientes";
             // 
+            // dtNascimento
+            // 
+            this.dtNascimento.CustomFormat = "dd/MM/yyyy";
+            this.dtNascimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtNascimento.Location = new System.Drawing.Point(155, 130);
+            this.dtNascimento.Name = "dtNascimento";
+            this.dtNascimento.Size = new System.Drawing.Size(131, 26);
+            this.dtNascimento.TabIndex = 4;
+            // 
             // edtCPF
             // 
             this.edtCPF.Location = new System.Drawing.Point(104, 68);
             this.edtCPF.Mask = "000.000.000-00";
             this.edtCPF.Name = "edtCPF";
             this.edtCPF.Size = new System.Drawing.Size(182, 26);
-            this.edtCPF.TabIndex = 24;
+            this.edtCPF.TabIndex = 2;
             this.edtCPF.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // btnLocCidade
@@ -91,7 +100,7 @@
             this.btnLocCidade.Location = new System.Drawing.Point(452, 163);
             this.btnLocCidade.Name = "btnLocCidade";
             this.btnLocCidade.Size = new System.Drawing.Size(25, 22);
-            this.btnLocCidade.TabIndex = 23;
+            this.btnLocCidade.TabIndex = 6;
             this.btnLocCidade.UseVisualStyleBackColor = true;
             this.btnLocCidade.Click += new System.EventHandler(this.btnLocCidade_Click);
             // 
@@ -113,7 +122,7 @@
             this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(107, 62);
-            this.button4.TabIndex = 20;
+            this.button4.TabIndex = 8;
             this.button4.Text = "Alterar";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
@@ -124,7 +133,7 @@
             this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(107, 62);
-            this.button3.TabIndex = 8;
+            this.button3.TabIndex = 10;
             this.button3.Text = "Cancelar";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -135,13 +144,15 @@
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(107, 62);
-            this.button2.TabIndex = 7;
+            this.button2.TabIndex = 9;
             this.button2.Text = "Excluir";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // cbGenero
             // 
+            this.cbGenero.BackColor = System.Drawing.SystemColors.Window;
+            this.cbGenero.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbGenero.FormattingEnabled = true;
             this.cbGenero.Items.AddRange(new object[] {
             "Masculino",
@@ -153,6 +164,7 @@
             this.cbGenero.Name = "cbGenero";
             this.cbGenero.Size = new System.Drawing.Size(182, 28);
             this.cbGenero.TabIndex = 3;
+            this.cbGenero.SelectedIndex = 0;
             // 
             // edtNomeCidade
             // 
@@ -227,19 +239,10 @@
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(107, 62);
-            this.button1.TabIndex = 6;
+            this.button1.TabIndex = 7;
             this.button1.Text = "Cadastrar";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // dtNascimento
-            // 
-            this.dtNascimento.CustomFormat = "dd/MM/yyyy";
-            this.dtNascimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtNascimento.Location = new System.Drawing.Point(155, 130);
-            this.dtNascimento.Name = "dtNascimento";
-            this.dtNascimento.Size = new System.Drawing.Size(131, 26);
-            this.dtNascimento.TabIndex = 25;
             // 
             // form_cadastro_paciente
             // 

@@ -27,11 +27,32 @@ namespace Reserva_de_Leitos___Covi19.classes.bll
             }   
             catch (Exception ex)
             {
-                throw new Exception("Erro ao Inserir o novo Paciente!" + ex.Message);
+                throw new Exception("Erro ao Inserir o novo Paciente! " + ex.Message);
             }
 
             bd = null;
             return resultado;
+        }
+
+        public static DataTable CarregarPacientes()
+        {
+            DataTable pacientes = new DataTable();
+            AcessoBancoDados bd;
+            try
+            {
+                bd = new AcessoBancoDados();
+                bd.conectar();
+                string comando = $"Select Nome, CPF from paciente";
+                pacientes = bd.RetDataTable(comando);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao Selecionar os Pacientes! " + ex.Message);
+            }
+
+            bd = null;
+
+            return pacientes;
         }
 
         public static bool Alterar(dto_cad_paciente paciente)
@@ -48,7 +69,7 @@ namespace Reserva_de_Leitos___Covi19.classes.bll
 
         public static dto_cad_paciente Selecionar(string cpf)
         {
-            dto_cad_paciente paciente = new dto_cad_paciente();
+            dto_cad_paciente paciente = null;
             AcessoBancoDados bd;
             try
             {
@@ -58,6 +79,7 @@ namespace Reserva_de_Leitos___Covi19.classes.bll
                 var dtPaciente =  bd.RetDataTable(comando);
                 foreach (DataRow linha in dtPaciente.Rows)
                 {
+                    paciente = new dto_cad_paciente();
                     paciente.Codigo = Convert.ToInt32(linha["Codigo"]);
                     paciente.Nome = linha["Nome"].ToString();
                     paciente.CPF = linha["CPF"].ToString();

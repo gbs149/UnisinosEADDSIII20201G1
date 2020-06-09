@@ -40,7 +40,7 @@ namespace Reserva_de_Leitos___Covi19.classes.bll
             {
                 bd = new AcessoBancoDados();
                 bd.conectar();
-                string comando = $"Select * from cidade Where COdigo = {codCidade}";
+                string comando = $"Select * from cidade Where Codigo = {codCidade}";
                 var dtCidade = bd.RetDataTable(comando);
                 foreach (DataRow linha in dtCidade.Rows)
                 {
