@@ -27,30 +27,14 @@ namespace Reserva_de_Leitos___Covi19
 
         private void btnLocPaciente_Click(object sender, EventArgs e)
         {
-            if (!LocalizarPaciente(edtCPF.Text))
-            {
-                MessageBox.Show("O CPF informado não foi localizado. Verifique!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                edtCPF.Focus();
-            }
+            LocalizarPaciente(edtCPF.Text);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (!ValidarDados())
-                return;
-
-            AtualizarCadPaciente();
-            var resultado = bll_cad_paciente.Incluir(Paciente);
-
-            if (resultado == false)
-            {
-                MessageBox.Show("Não foi possível incluir o paciente. Verifique!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            MessageBox.Show("Cadastro Realizado!");
-            LimparTela();
+            CadastrarPaciente();
         }
+
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -81,16 +65,75 @@ namespace Reserva_de_Leitos___Covi19
 
 
         #region Métodos do Formulário
-        private void LimparTela()
+
+        private void CadastrarPaciente()
         {
-            edtNome.Text = "";
-            edtCPF.Text = "";
-            cbGenero.Text = "";
-            dtNascimento.Value = DateTime.Now.Date;
-            edtNomeCidade.Text = "";
-            Paciente = new dto_cad_paciente();
-            Cidade = new dto_cad_cidade();
+            if (ValidarDados() == false)
+                return;
+
+            AtualizarDadosPaciente();
+
+            bool resultado = bll_cad_paciente.Incluir(Paciente);
+            if (resultado == false)
+            {
+                MessageBox.Show("Não foi possível incluir o paciente. Verifique!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            MessageBox.Show("Cadastro Realizado!");
+            LimparTela();
         }
+
+        private void LocalizarPaciente(string cpf)
+        {
+            dto_cad_paciente paciente = null;
+            if (String.IsNullOrEmpty(cpf))
+            {
+                form_loc_paciente frmLocPaciente = new form_loc_paciente();
+                frmLocPaciente.ShowDialog();
+                if (frmLocPaciente.DialogResult == DialogResult.OK)
+                    paciente = frmLocPaciente.Paciente;
+                else
+                    return;
+            }
+            else
+                paciente = bll_cad_paciente.Selecionar(cpf);
+
+            if (paciente == null)
+            {
+                MessageBox.Show("Não foi Possível Localizar o Paciente!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+            {
+                edtNome.Text = paciente.Nome;
+                edtCPF.Text = paciente.CPF;
+
+                switch (paciente.Genero)
+                {
+                    case 'M': cbGenero.SelectedIndex = 0; break;
+                    case 'F': cbGenero.SelectedIndex = 1; break;
+                    case 'O': cbGenero.SelectedIndex = 2; break;
+                    case 'N': cbGenero.SelectedIndex = 3; break;
+                    default: cbGenero.SelectedIndex = 0; break;
+                }
+
+                dtNascimento.Value = paciente.DataNascimento;
+                Cidade = bll_cad_cidade.Selecionar(paciente.Cidade);
+                edtNomeCidade.Text = Cidade.Nome;
+            }
+        }
+
+        private void AtualizarDadosPaciente()
+        {
+            Paciente = new dto_cad_paciente();
+            Paciente.Nome = edtNome.Text;
+            Paciente.CPF = edtCPF.Text;
+            Paciente.DataNascimento = dtNascimento.Value.Date;
+            Paciente.Genero = Convert.ToChar(cbGenero.Text.Substring(0, 1));
+            Paciente.Cidade = Cidade.Codigo;
+        }
+
         private void LocalizarCidade()
         {
             form_loc_cidades frmLocCidades = new form_loc_cidades();
@@ -102,14 +145,17 @@ namespace Reserva_de_Leitos___Covi19
             }
         }
 
-        private void AtualizarCadPaciente()
+        private void LimparTela()
         {
-            Paciente.Nome = edtNome.Text;
-            Paciente.CPF = edtCPF.Text;
-            Paciente.DataNascimento = dtNascimento.Value.Date;
-            Paciente.Genero = Convert.ToChar(cbGenero.Text.Substring(0,1));
-            Paciente.Cidade = Cidade.Codigo;
+            edtNome.Text = "";
+            edtCPF.Text = "";
+            cbGenero.Text = "";
+            dtNascimento.Value = DateTime.Now.Date;
+            edtNomeCidade.Text = "";
+            Paciente = null;
+            Cidade = null;
         }
+
 
         private bool ValidarDados()
         {
@@ -137,43 +183,7 @@ namespace Reserva_de_Leitos___Covi19
             return true;
         }
 
-        private bool LocalizarPaciente(string cpf)
-        {
-            bool resultado = false;
-            if (String.IsNullOrEmpty(cpf))
-            {
-                form_loc_paciente frmLocPaciente = new form_loc_paciente();
-                frmLocPaciente.ShowDialog();
-                if (frmLocPaciente.DialogResult == DialogResult.OK)
-                    Paciente = frmLocPaciente.Paciente;
-                else
-                    resultado = true; //Para não cair na mensagem.
-            }
-            else
-                Paciente = bll_cad_paciente.Selecionar(cpf);
-
-            if (Paciente != null)
-            {
-                edtNome.Text = Paciente.Nome;
-                edtCPF.Text = Paciente.CPF;
-
-                switch (Paciente.Genero)
-                {
-                    case 'M': cbGenero.SelectedIndex = 0; break;
-                    case 'F': cbGenero.SelectedIndex = 1; break;
-                    case 'O': cbGenero.SelectedIndex = 2; break;
-                    case 'N': cbGenero.SelectedIndex = 3; break;
-                    default: cbGenero.SelectedIndex = 0; break;
-                }
-
-                dtNascimento.Value = Paciente.DataNascimento;
-                Cidade = bll_cad_cidade.Selecionar(Paciente.Cidade);
-                edtNomeCidade.Text = Cidade.Nome;
-                resultado = true;
-            }
-
-            return resultado;
-        }
+        
         #endregion
     }
 }
