@@ -7,6 +7,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Reserva_de_Leitos___Covi19.classes.bll
 {
@@ -27,7 +28,9 @@ namespace Reserva_de_Leitos___Covi19.classes.bll
             }   
             catch (Exception ex)
             {
-                throw new Exception("Erro ao Inserir o novo Paciente! " + ex.Message);
+                MessageBox.Show("Erro ao incluir o cadastro do paciente! \n" +
+                Convert.ToString(ex), "Erro na operação de cancelamento!",
+                MessageBoxButtons.OK);
             }
 
             bd = null;
@@ -47,7 +50,9 @@ namespace Reserva_de_Leitos___Covi19.classes.bll
             }
             catch (Exception ex)
             {
-                throw new Exception("Erro ao Selecionar os Pacientes! " + ex.Message);
+                MessageBox.Show("Erro ao selecionar o cadastro do paciente! \n" +
+                Convert.ToString(ex), "Erro na operação de cancelamento!",
+                MessageBoxButtons.OK);
             }
 
             bd = null;
@@ -55,15 +60,55 @@ namespace Reserva_de_Leitos___Covi19.classes.bll
             return pacientes;
         }
 
-        public static bool Alterar(dto_cad_paciente paciente)
-        {
-            return false;
-
-        }
-
+        /* Exclusão do cadastro do paciente*/
         public static bool Excluir(string cpf)
         {
-            return false;
+            AcessoBancoDados bd;
+            bool resultado = false;
+            try
+            {
+                bd = new AcessoBancoDados();
+                bd.conectar();
+                string comando = "delete from Paciente where CPF =" + cpf;
+                bd.ExecutarComandoSQL(comando);
+                resultado = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao excluir o cadastro do paciente! \n" +
+                Convert.ToString(ex), "Erro na operação de cancelamento!",
+                MessageBoxButtons.OK);
+            }   // fim catch excluir
+
+            bd = null;
+            return resultado;
+        }   // fim Excluir
+
+        /* Atualização do cadastro do paciente */
+        public static bool Alterar(dto_cad_paciente paciente)
+        {
+            AcessoBancoDados bd;
+            bool resultado = false;
+            try
+            {
+                bd = new AcessoBancoDados();
+                bd.conectar();
+                string comando = "update paciente set NOME= '" + paciente.Nome + "', CPF= '" + paciente.CPF +
+                                 "', GENERO= '" + paciente.Genero + "', DATA_NASCIMENTO = '" + (paciente.DataNascimento).ToString("yyyy-MM-dd H:mm:ss") +
+                                 "', CIDADE_CODIGO= " + paciente.Cidade + " where CODIGO = " + paciente.Codigo;
+                bd.ExecutarComandoSQL(comando);
+                resultado = true;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao alterar o cadastro do paciente! \n" +
+                Convert.ToString(ex), "Erro na operação de cancelamento!",
+                MessageBoxButtons.OK);
+            }   // fim catch excluir
+
+            bd = null;
+            return resultado;
 
         }
 

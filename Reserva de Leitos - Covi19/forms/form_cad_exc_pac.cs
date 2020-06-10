@@ -30,31 +30,24 @@ namespace Reserva_de_Leitos___Covi19
             LocalizarPaciente(edtCPF.Text);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnCadastrar_Click(object sender, EventArgs e)
         {
             CadastrarPaciente();
         }
 
-
-        private void button3_Click(object sender, EventArgs e)
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void btnAlterar_Click(object sender, EventArgs e)
         {
-            form_msn4 form_msn4 = new form_msn4();
-            form_msn4.Show();
+            AlterarPaciente();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnExcluir_Click(object sender, EventArgs e)
         {
-            form_msn5 form_Msn5 = new form_msn5();
-            form_Msn5.Show();
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
+            ExcluirPaciente();
 
         }
 
@@ -65,11 +58,89 @@ namespace Reserva_de_Leitos___Covi19
 
 
         #region Métodos do Formulário
+        private void ExcluirPaciente()
+        {
+            try
+            {
+                bool retorno = false;
+                DialogResult result = MessageBox.Show("Deseja confirmar a exclusão deste cadastro de paciente? ",
+                                                      "Confirmação de exclusão", MessageBoxButtons.OKCancel);
+                if (result == DialogResult.OK)
+                {
+                    if (edtCPF.Text != "")
+                    {
+                        string cpf = edtCPF.Text;
+                        retorno = bll_cad_paciente.Excluir(cpf);    // realiza a exclusão do cadastro do paciente
+                        LimparTela();
+                    }
+                }
+                else if (result == DialogResult.Cancel)
+                {
+                    MessageBox.Show("Exclusão do cadastro cancelada!",
+                                    "Confirmação de exclusão", MessageBoxButtons.OK);
+                }
+
+                if (retorno == true)
+                    MessageBox.Show("Exclusão do cadastro realizada com sucesso!",
+                                    "Confirmação de exclusão", MessageBoxButtons.OK);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Convert.ToString(ex), "Erro na operação de cancelamento!",
+                                MessageBoxButtons.OK);
+            }   //
+        }
+
+        private void AlterarPaciente()
+        {
+            try
+            {
+                bool retorno = false;
+                DialogResult result = MessageBox.Show("Deseja confirmar a alteração deste cadastro de paciente? ",
+                                                      "Confirmação de alteração", MessageBoxButtons.OKCancel);
+                if (result == DialogResult.OK)
+                {
+                    if (ValidarDados() == false)
+                        return;
+
+                    AtualizarDadosPaciente();
+
+                    retorno = bll_cad_paciente.Alterar(Paciente);
+
+                    if (retorno == false)
+                    {
+                        MessageBox.Show("Não foi possível incluir o paciente. Verifique!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    LimparTela();
+                }
+                else if (result == DialogResult.Cancel)
+                {
+                    MessageBox.Show("Alteração do cadastro cancelada!",
+                                    "Confirmação de alteração", MessageBoxButtons.OK);
+                }
+                if (retorno == true)
+                    MessageBox.Show("Alteração do cadastro realizada com sucesso!",
+                                    "Confirmação de alteração", MessageBoxButtons.OK);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Convert.ToString(ex), "Erro na operação de cancelamento!", MessageBoxButtons.OK);
+            }   // fim exception
+        }
 
         private void CadastrarPaciente()
         {
             if (ValidarDados() == false)
                 return;
+
+            var paciente = bll_cad_paciente.Selecionar(edtCPF.Text);
+            if (paciente != null)
+            {
+                MessageBox.Show("Já existe um paciente com este CPF. Verifique!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             AtualizarDadosPaciente();
 
@@ -79,9 +150,13 @@ namespace Reserva_de_Leitos___Covi19
                 MessageBox.Show("Não foi possível incluir o paciente. Verifique!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            else
+            {
+                MessageBox.Show("Alteração do cadastro realizada com sucesso!",
+                "Confirmação de Inclusão", MessageBoxButtons.OK);
+                LimparTela();
+            }
 
-            MessageBox.Show("Cadastro Realizado!");
-            LimparTela();
         }
 
         private void LocalizarPaciente(string cpf)
@@ -121,12 +196,15 @@ namespace Reserva_de_Leitos___Covi19
                 dtNascimento.Value = paciente.DataNascimento;
                 Cidade = bll_cad_cidade.Selecionar(paciente.Cidade);
                 edtNomeCidade.Text = Cidade.Nome;
+                Paciente = paciente;
             }
         }
 
         private void AtualizarDadosPaciente()
         {
-            Paciente = new dto_cad_paciente();
+            if (Paciente == null)
+                Paciente = new dto_cad_paciente();
+
             Paciente.Nome = edtNome.Text;
             Paciente.CPF = edtCPF.Text;
             Paciente.DataNascimento = dtNascimento.Value.Date;
@@ -149,7 +227,7 @@ namespace Reserva_de_Leitos___Covi19
         {
             edtNome.Text = "";
             edtCPF.Text = "";
-            cbGenero.Text = "";
+            cbGenero.SelectedIndex = 0;
             dtNascimento.Value = DateTime.Now.Date;
             edtNomeCidade.Text = "";
             Paciente = null;
@@ -180,10 +258,15 @@ namespace Reserva_de_Leitos___Covi19
                 return false;
             }
 
+            if (dtNascimento.Value.Date > DateTime.Now.Date)
+            {
+                MessageBox.Show("A Data de Nascimento não pode ser maior que a atual!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                dtNascimento.Focus();
+                return false;
+            }
+
             return true;
         }
-
-        
         #endregion
     }
 }
