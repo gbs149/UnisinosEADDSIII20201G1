@@ -49,7 +49,7 @@ namespace Reserva_de_Leitos___Covi19.forms
         {
             if (dgvCidades.Rows.Count > 0)
             {
-                int codigo = Convert.ToInt32(dgvCidades.CurrentRow.Cells["Codigo"].Value);
+                int codigo = Convert.ToInt32(dgvCidades.CurrentRow.Cells["Id"].Value);
                 Cidade = bll_cad_cidade.Selecionar(codigo);
                 DialogResult = DialogResult.OK;
                 this.Close();

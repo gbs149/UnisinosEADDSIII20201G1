@@ -22,7 +22,7 @@ namespace Reserva_de_Leitos___Covi19.classes.bll
             {
                 bd = new AcessoBancoDados();
                 bd.conectar();
-                string comando = $"INSERT INTO Paciente(NOME, CPF, GENERO, DATA_NASCIMENTO, CIDADE_CODIGO) VALUES('{paciente.Nome}', '{paciente.CPF}', '{paciente.Genero}', '{paciente.DataNascimento.ToString("yyyy-MM-dd H:mm:ss")}',  {paciente.Cidade})";
+                string comando = $"INSERT INTO Paciente(NOME, CPF, GENERO, DATA_NASCIMENTO, Cidade_id) VALUES('{paciente.Nome}', '{paciente.CPF}', '{paciente.Genero}', '{paciente.DataNascimento.ToString("yyyy-MM-dd H:mm:ss")}',  {paciente.Cidade})";
                 bd.ExecutarComandoSQL(comando);
                 resultado = true;
             }   
@@ -95,7 +95,7 @@ namespace Reserva_de_Leitos___Covi19.classes.bll
                 bd.conectar();
                 string comando = "update paciente set NOME= '" + paciente.Nome + "', CPF= '" + paciente.CPF +
                                  "', GENERO= '" + paciente.Genero + "', DATA_NASCIMENTO = '" + (paciente.DataNascimento).ToString("yyyy-MM-dd H:mm:ss") +
-                                 "', CIDADE_CODIGO= " + paciente.Cidade + " where CODIGO = " + paciente.Codigo;
+                                 "', Cidade_id = " + paciente.Cidade + " where Id = " + paciente.Codigo;
                 bd.ExecutarComandoSQL(comando);
                 resultado = true;
 
@@ -125,12 +125,12 @@ namespace Reserva_de_Leitos___Covi19.classes.bll
                 foreach (DataRow linha in dtPaciente.Rows)
                 {
                     paciente = new dto_cad_paciente();
-                    paciente.Codigo = Convert.ToInt32(linha["Codigo"]);
+                    paciente.Codigo = Convert.ToInt32(linha["Id"]);
                     paciente.Nome = linha["Nome"].ToString();
                     paciente.CPF = linha["CPF"].ToString();
                     paciente.DataNascimento = Convert.ToDateTime(linha["DATA_NASCIMENTO"].ToString());
                     paciente.Genero = Convert.ToChar(linha["GENERO"].ToString());
-                    paciente.Cidade = Convert.ToInt32(linha["CIDADE_CODIGO"]);
+                    paciente.Cidade = Convert.ToInt32(linha["Cidade_id"]);
                 }
             }
             catch (Exception ex)

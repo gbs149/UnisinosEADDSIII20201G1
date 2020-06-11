@@ -152,7 +152,7 @@ namespace Reserva_de_Leitos___Covi19
             }
             else
             {
-                MessageBox.Show("Alteração do cadastro realizada com sucesso!",
+                MessageBox.Show("Cadastro realizado com sucesso!",
                 "Confirmação de Inclusão", MessageBoxButtons.OK);
                 LimparTela();
             }

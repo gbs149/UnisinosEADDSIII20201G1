@@ -40,12 +40,12 @@ namespace Reserva_de_Leitos___Covi19.classes.bll
             {
                 bd = new AcessoBancoDados();
                 bd.conectar();
-                string comando = $"Select * from cidade Where Codigo = {codCidade}";
+                string comando = $"Select * from cidade Where Id = {codCidade}";
                 var dtCidade = bd.RetDataTable(comando);
                 foreach (DataRow linha in dtCidade.Rows)
                 {
                     cidade.Nome = linha["Nome"].ToString();
-                    cidade.Codigo = Convert.ToInt32(linha["Codigo"].ToString());
+                    cidade.Codigo = Convert.ToInt32(linha["Id"].ToString());
                     cidade.UF = linha["UF"].ToString();
                 }
             }
