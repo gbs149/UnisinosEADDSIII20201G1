@@ -346,8 +346,3 @@ healthchecksdb
 # Backup folder for Package Reference Convert tool in Visual Studio 2017
 MigrationBackup/
 
-# Ionide (cross platform F# VS Code tools) working folder
-.ionide/
-/Reserva de Leitos - Covi19/forms/form_loc_hospital .resx
-/Reserva de Leitos - Covi19/forms/form_loc_hospital .designer.cs
-/Reserva de Leitos - Covi19/forms/form_loc_hospital .cs
