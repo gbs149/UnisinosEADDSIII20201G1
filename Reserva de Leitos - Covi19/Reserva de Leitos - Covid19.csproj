@@ -116,11 +116,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\bll\bll_cad_cidade.cs" />
+    <Compile Include="classes\bll\bll_cad_hospital.cs" />
     <Compile Include="classes\bll\bll_metodos.cs" />
     <Compile Include="classes\bll\bll_cad_paciente.cs" />
     <Compile Include="classes\dal\AcessoBancoDados.cs" />
     <Compile Include="classes\dto\dto_cad.cs" />
     <Compile Include="classes\dto\dto_cad_cidade.cs" />
+    <Compile Include="classes\dto\dto_cad_hospital.cs" />
     <Compile Include="classes\dto\dto_cad_paciente.cs" />
     <Compile Include="forms\form_cad_exc_hosp.cs">
       <SubType>Form</SubType>
@@ -200,6 +202,12 @@
     <Compile Include="forms\form_msn7cs.designer.cs">
       <DependentUpon>form_msn7cs.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\form_loc_hospital .cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\form_loc_hospital .designer.cs">
+      <DependentUpon>form_loc_hospital .cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="forms\form_cad_exc_hosp.resx">
@@ -240,6 +248,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\form_msn7cs.resx">
       <DependentUpon>form_msn7cs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\form_loc_hospital .resx">
+      <DependentUpon>form_loc_hospital .cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
