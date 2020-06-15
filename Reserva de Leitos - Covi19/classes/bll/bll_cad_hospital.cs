@@ -20,7 +20,7 @@ namespace Reserva_de_Leitos___Covi19.classes.bll
 
             try
             {
-                bd = new AcessoBancoDados();
+                bd = AcessoBancoDados.GetInstance;
                 bd.conectar();
                 string comando = $"INSERT INTO hospital(NOME, CNPJ, Cidade_id) VALUES('{hospital.Nome}', '{hospital.CNPJ}', {hospital.Cidade})";
                 bd.ExecutarComandoSQL(comando);
@@ -43,7 +43,7 @@ namespace Reserva_de_Leitos___Covi19.classes.bll
             AcessoBancoDados bd;
             try
             {
-                bd = new AcessoBancoDados();
+                bd = AcessoBancoDados.GetInstance;
                 bd.conectar();
                 string comando = $"Select Nome, CNPJ from hospital";
                 hospitais = bd.RetDataTable(comando);
@@ -78,7 +78,7 @@ namespace Reserva_de_Leitos___Covi19.classes.bll
             AcessoBancoDados bd;
             try
             {
-                bd = new AcessoBancoDados();
+                bd = AcessoBancoDados.GetInstance;
                 bd.conectar();
                 string comando = $"Select * from hospital Where CNPJ = '{CNPJ}'";
                 var dthospital =  bd.RetDataTable(comando);
@@ -101,6 +101,70 @@ namespace Reserva_de_Leitos___Covi19.classes.bll
             bd = null;
 
             return hospital;
+        }
+
+        public static DataTable CarregarLeitosDisponiveis(int cidade)
+        {
+            DataTable dtHospitaisLeitos = null;
+            AcessoBancoDados bd;
+            try
+            {
+                bd = AcessoBancoDados.GetInstance;
+                bd.conectar();
+                string comando = $@"select h.Nome Hospital, (select count(*) from leito l
+				                                              where l.Tipo = 'N' 
+                                                                and l.Situacao = 'D'
+                                                                and h.Id = l.Hospital_id) as 'LeitosNormais',
+			                                                (select count(*) from leito l
+				                                              where l.Tipo = 'U' 
+                                                                and l.Situacao = 'D'
+                                                                and h.Id = l.Hospital_id) as 'LeitosUTI',
+                                    h.Id Hospital_Id, h.CNPJ
+                                    From hospital h  
+                                    where h.Cidade_id = {cidade}";
+                dtHospitaisLeitos = bd.RetDataTable(comando);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao selecionar o cadastro do hospital! \n" +
+                Convert.ToString(ex), "Erro na operação de cadastro!",
+                MessageBoxButtons.OK);
+            }
+
+            bd = null;
+            return dtHospitaisLeitos;
+        }
+
+        internal static DataTable CarregarLeitoInternacao(int leito_Id)
+        {
+            DataTable dtHospitaisLeitos = null;
+            AcessoBancoDados bd;
+            try
+            {
+                bd = AcessoBancoDados.GetInstance;
+                bd.conectar();
+                string comando = $@"select h.Nome Hospital, (select count(*) from leito l1
+                                                              where l1.Tipo = 'N' 
+                                                                and l1.Situacao = 'D'
+                                                                and h.Id = l1.Hospital_id) as 'LeitosNormais',
+                                                            (select count(*) from leito l2
+                                                              where l2.Tipo = 'U' 
+                                                                and l2.Situacao = 'D'
+                                                                and h.Id = l2.Hospital_id) as 'LeitosUTI',
+		                                    h.Id Hospital_Id, h.CNPJ
+                                    From hospital h
+                                    inner join leito l on l.Hospital_id = h.Id and l.Id = {leito_Id}";
+                dtHospitaisLeitos = bd.RetDataTable(comando);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao selecionar o cadastro do hospital! \n" +
+                Convert.ToString(ex), "Erro na operação de cadastro!",
+                MessageBoxButtons.OK);
+            }
+
+            bd = null;
+            return dtHospitaisLeitos;
         }
     }
 }

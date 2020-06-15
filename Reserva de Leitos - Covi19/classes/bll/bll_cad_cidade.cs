@@ -17,7 +17,7 @@ namespace Reserva_de_Leitos___Covi19.classes.bll
             AcessoBancoDados bd;
             try
             {
-                bd = new AcessoBancoDados();
+                bd = AcessoBancoDados.GetInstance;
                 bd.conectar();
                 string comando = $"Select * from cidade";
                 cidades = bd.RetDataTable(comando);
@@ -38,7 +38,7 @@ namespace Reserva_de_Leitos___Covi19.classes.bll
             AcessoBancoDados bd;
             try
             {
-                bd = new AcessoBancoDados();
+                bd = AcessoBancoDados.GetInstance;
                 bd.conectar();
                 string comando = $"Select * from cidade Where Id = {codCidade}";
                 var dtCidade = bd.RetDataTable(comando);

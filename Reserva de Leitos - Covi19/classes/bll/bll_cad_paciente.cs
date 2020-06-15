@@ -20,7 +20,7 @@ namespace Reserva_de_Leitos___Covi19.classes.bll
 
             try
             {
-                bd = new AcessoBancoDados();
+                bd = AcessoBancoDados.GetInstance;
                 bd.conectar();
                 string comando = $"INSERT INTO Paciente(NOME, CPF, GENERO, DATA_NASCIMENTO, Cidade_id) VALUES('{paciente.Nome}', '{paciente.CPF}', '{paciente.Genero}', '{paciente.DataNascimento.ToString("yyyy-MM-dd H:mm:ss")}',  {paciente.Cidade})";
                 bd.ExecutarComandoSQL(comando);
@@ -43,7 +43,7 @@ namespace Reserva_de_Leitos___Covi19.classes.bll
             AcessoBancoDados bd;
             try
             {
-                bd = new AcessoBancoDados();
+                bd = AcessoBancoDados.GetInstance;
                 bd.conectar();
                 string comando = $"Select Nome, CPF from paciente";
                 pacientes = bd.RetDataTable(comando);
@@ -67,7 +67,7 @@ namespace Reserva_de_Leitos___Covi19.classes.bll
             bool resultado = false;
             try
             {
-                bd = new AcessoBancoDados();
+                bd = AcessoBancoDados.GetInstance;
                 bd.conectar();
                 string comando = "delete from Paciente where CPF =" + cpf;
                 bd.ExecutarComandoSQL(comando);
@@ -91,7 +91,7 @@ namespace Reserva_de_Leitos___Covi19.classes.bll
             bool resultado = false;
             try
             {
-                bd = new AcessoBancoDados();
+                bd = AcessoBancoDados.GetInstance;
                 bd.conectar();
                 string comando = "update paciente set NOME= '" + paciente.Nome + "', CPF= '" + paciente.CPF +
                                  "', GENERO= '" + paciente.Genero + "', DATA_NASCIMENTO = '" + (paciente.DataNascimento).ToString("yyyy-MM-dd H:mm:ss") +
@@ -118,7 +118,7 @@ namespace Reserva_de_Leitos___Covi19.classes.bll
             AcessoBancoDados bd;
             try
             {
-                bd = new AcessoBancoDados();
+                bd = AcessoBancoDados.GetInstance;
                 bd.conectar();
                 string comando = $"Select * from Paciente Where CPF = '{cpf}'";
                 var dtPaciente =  bd.RetDataTable(comando);

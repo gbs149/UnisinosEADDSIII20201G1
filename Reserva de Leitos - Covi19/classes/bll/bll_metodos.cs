@@ -39,7 +39,7 @@ namespace CE_RCA.Codigo.BLL
                 string tecinstal = "";
                 int status = dto.Status;
 
-                bd = new AcessoBancoDados();
+                bd = AcessoBancoDados.GetInstance;
                 bd.conectar();
                 string comando = "INSERT INTO equipamentos(tipo, fabricante, modelo, sn, contagem, potencia, polegada, status, local, tecent, tecret, tecsaid, tecinstal) VALUES('" + tipo + "','" + fabricante + "','" + modelo + "','" + sn + "','" + contagem + "','" + potencia + "','" + polegada + "','" + status + "','" + local + "','" + tecent + "','" + tecret + "','" + tecsaid + "','" + tecinstal + "')";
                 bd.ExecutarComandoSQL(comando);
@@ -62,7 +62,7 @@ namespace CE_RCA.Codigo.BLL
             DataTable dt = new DataTable();
             try
             {   //ini excessão
-                bd = new AcessoBancoDados();
+                bd = AcessoBancoDados.GetInstance;
                 bd.conectar();
                 int status = 0;
                 dt = bd.RetDataTable("SELECT id, tipo, fabricante, modelo, sn, contagem, potencia, polegada, local from equipamentos where status =" + status);
@@ -85,7 +85,7 @@ namespace CE_RCA.Codigo.BLL
             DataTable dt = new DataTable();
             try
             {   //ini excessão
-                bd = new AcessoBancoDados();
+                bd = AcessoBancoDados.GetInstance;
                 bd.conectar();
                 int status = 1;
                 dt = bd.RetDataTable("SELECT id, tipo, fabricante, modelo, sn, contagem, potencia, polegada, local from equipamentos where status =" + status);
@@ -107,7 +107,7 @@ namespace CE_RCA.Codigo.BLL
             DataTable dt = new DataTable();
             try
             {   //ini excessão
-                bd = new AcessoBancoDados();
+                bd = AcessoBancoDados.GetInstance;
                 bd.conectar();
                 dt = bd.RetDataTable("SELECT id, tipo, fabricante, modelo, sn, contagem, potencia, polegada, status, local, tecent, tecret, tecsaid, tecinstal from equipamentos"); 
             }   //fim excessão
@@ -128,7 +128,7 @@ namespace CE_RCA.Codigo.BLL
             DataTable dt = new DataTable();
             try
             {   //ini excessão
-                bd = new AcessoBancoDados();
+                bd = AcessoBancoDados.GetInstance;
                 bd.conectar();
                 if(dto.Tipo == "Impressora")
                 dt = bd.RetDataTable("SELECT id, tipo, fabricante, modelo, sn, contagem, local, tecent, tecret, tecsaid, tecinstal from equipamentos where tipo =" + dto.Tipo);
@@ -158,7 +158,7 @@ namespace CE_RCA.Codigo.BLL
             {   //ini try
                 string cont = dto.Contagem.Replace("'", "''");
 
-                bd = new AcessoBancoDados();
+                bd = AcessoBancoDados.GetInstance;
                 bd.conectar();
                 string comando = "UPDATE equipamentos set contagem = '" + cont + "' where id =" + dto.ID;
                 bd.ExecutarComandoSQL(comando);
@@ -181,7 +181,7 @@ namespace CE_RCA.Codigo.BLL
             {   //ini try
                 string local = "RCA Interno";
 
-                bd = new AcessoBancoDados();
+                bd = AcessoBancoDados.GetInstance;
                 bd.conectar();
                 string comando = "UPDATE equipamentos set local = '" + local + "' where id =" + dto.ID;
                 bd.ExecutarComandoSQL(comando);
@@ -209,7 +209,7 @@ namespace CE_RCA.Codigo.BLL
                 string tecInstal = "";
                 int status = 0;     // Variável de atualização de status 1 para 0, ou saída para entrada
 
-                bd = new AcessoBancoDados();
+                bd = AcessoBancoDados.GetInstance;
                 bd.conectar();
                 string comando = "UPDATE equipamentos set status = '" + status + "', local = '" + local + "', tecret = '" + tecRet + "', tecent = '" + tecEnt + "', tecsaid = '" + tecSaid + "', tecinstal = '" + tecInstal + "' where id =" + dto.ID;
                 bd.ExecutarComandoSQL(comando);
@@ -256,7 +256,7 @@ namespace CE_RCA.Codigo.BLL
                 string tecRet = "";
                 int status = 1;     // Variável de atualização de status 0 para 1, ou entrada para saída
 
-                bd = new AcessoBancoDados();
+                bd = AcessoBancoDados.GetInstance;
                 bd.conectar();
                 string comando = "UPDATE equipamentos set status = '" + status + "', local = '" + local + "', tecsaid = '" + tecSaid + "', tecinstal = '" + tecInstal + "', tecent = '" + tecEnt + "', tecret = '" + tecRet + "' where id =" + dto.ID;
                 bd.ExecutarComandoSQL(comando);
@@ -350,7 +350,7 @@ namespace CE_RCA.Codigo.BLL
             try
             {   //ini try
 
-                bd = new AcessoBancoDados();
+                bd = AcessoBancoDados.GetInstance;
                 bd.conectar();
                 string comando = "DELETE FROM impressoras where id =" + idEquip;
                 bd.ExecutarComandoSQL(comando);

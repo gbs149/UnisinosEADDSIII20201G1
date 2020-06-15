@@ -22,6 +22,25 @@ namespace ControleEquipamentos.Code.DAL
         private String password = "1234";
         private String database = "prlcovid19";
 
+        private static AcessoBancoDados acessoBancoDados;
+
+        private AcessoBancoDados()
+        {
+
+        }
+
+        public static AcessoBancoDados GetInstance
+        {
+            get
+            {
+                if (acessoBancoDados == null)
+                {
+                    acessoBancoDados = new AcessoBancoDados();
+                }
+                return acessoBancoDados;
+            }
+        }
+
         public void conectar()
         {   //ini metodo conectar              
             if (conn != null)
