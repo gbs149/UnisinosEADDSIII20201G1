@@ -58,12 +58,74 @@ namespace Reserva_de_Leitos___Covi19.forms
         #region Métodos do Formulário
         private void Excluirhospital()
         {
+            try
+            {
+                bool retorno = false;
+                DialogResult result = MessageBox.Show("Deseja confirmar a exclusão deste cadastro de hospital? ",
+                                                      "Confirmação de exclusão", MessageBoxButtons.OKCancel);
+                if (result == DialogResult.OK)
+                {
+                    if (edtCNPJ.Text != "")
+                    {
+                        string cnpj = edtCNPJ.Text;
+                        retorno = bll_cad_paciente.Excluir(cnpj);    // realiza a exclusão do cadastro do hospital
+                        LimparTela();
+                    }
+                }
+                else if (result == DialogResult.Cancel)
+                {
+                    MessageBox.Show("Exclusão do cadastro cancelada!",
+                                    "Confirmação de exclusão", MessageBoxButtons.OK);
+                }
 
+                if (retorno == true)
+                    MessageBox.Show("Exclusão do cadastro realizada com sucesso!",
+                                    "Confirmação de exclusão", MessageBoxButtons.OK);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Convert.ToString(ex), "Erro na operação de cancelamento!",
+                                MessageBoxButtons.OK);
+            }   //
         }
 
         private void Alterarhospital()
         {
+            try
+            {
+                bool retorno = false;
+                DialogResult result = MessageBox.Show("Deseja confirmar a alteração deste cadastro do hospital? ",
+                                                      "Confirmação de alteração", MessageBoxButtons.OKCancel);
+                if (result == DialogResult.OK)
+                {
+                    if (ValidarDados() == false)
+                        return;
 
+                    AtualizarDadoshospital();
+
+                    retorno = bll_cad_hospital.Alterar(Hospital);
+
+                    if (retorno == false)
+                    {
+                        MessageBox.Show("Não foi possível alterar o cadastro do hospital. Verifique!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    LimparTela();
+                }
+                else if (result == DialogResult.Cancel)
+                {
+                    MessageBox.Show("Alteração do cadastro cancelada!",
+                                    "Confirmação de alteração", MessageBoxButtons.OK);
+                }
+                if (retorno == true)
+                    MessageBox.Show("Alteração do cadastro realizada com sucesso!",
+                                    "Confirmação de alteração", MessageBoxButtons.OK);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Convert.ToString(ex), "Erro na operação de cancelamento!", MessageBoxButtons.OK);
+            }   // fim exception
         }
 
         private void Cadastrarhospital()
