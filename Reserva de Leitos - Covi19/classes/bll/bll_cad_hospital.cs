@@ -63,13 +63,51 @@ namespace Reserva_de_Leitos___Covi19.classes.bll
         /* Exclusão do cadastro do hospital*/
         public static bool Excluir(string cnpj)
         {
-            return false;
+            AcessoBancoDados bd;
+            bool resultado = false;
+            try
+            {
+                bd = new AcessoBancoDados();
+                bd.conectar();
+                string comando = "delete from hospital where CNPJ =" + cnpj;
+                bd.ExecutarComandoSQL(comando);
+                resultado = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao excluir o cadastro do paciente! \n" +
+                Convert.ToString(ex), "Erro na operação de cancelamento!",
+                MessageBoxButtons.OK);
+            }   // fim catch excluir
+
+            bd = null;
+            return resultado;
         }   // fim Excluir
 
         /* Atualização do cadastro do hospital */
         public static bool Alterar(dto_cad_hospital hospital)
         {
-            return false;
+            AcessoBancoDados bd;
+            bool resultado = false;
+            try
+            {
+                bd = new AcessoBancoDados();
+                bd.conectar();
+                string comando = "update hospital set NOME= '" + hospital.Nome + "', CNPJ= '" + hospital.CNPJ +
+                                 "', Cidade_id= " + hospital.Cidade + " where Id = " + hospital.Codigo;
+                bd.ExecutarComandoSQL(comando);
+                resultado = true;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao alterar o cadastro do hospital! \n" +
+                Convert.ToString(ex), "Erro na operação de alteração!",
+                MessageBoxButtons.OK);
+            }   // fim catch alterar
+
+            bd = null;
+            return resultado;
         }
 
         public static dto_cad_hospital Selecionar(string CNPJ)
