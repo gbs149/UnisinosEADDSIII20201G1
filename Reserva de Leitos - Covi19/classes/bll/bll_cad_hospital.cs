@@ -61,21 +61,31 @@ namespace Reserva_de_Leitos___Covi19.classes.bll
         }
 
         /* Exclusão do cadastro do hospital*/
-        public static bool Excluir(string cnpj)
+        public static bool Excluir(dto_cad_hospital hospital)
         {
             AcessoBancoDados bd;
             bool resultado = false;
             try
             {
-                bd = new AcessoBancoDados();
-                bd.conectar();
-                string comando = "delete from hospital where CNPJ =" + cnpj;
-                bd.ExecutarComandoSQL(comando);
-                resultado = true;
+                var existeLeito = bll_cad_leitos.VerificarLeitoHospital(hospital.Codigo);
+                if (existeLeito)
+                {
+                    MessageBox.Show("Não foi possível excluir o cadastro do hospital.\nExiste um leito alocado para este Hospital!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    resultado = false;
+                }
+                else
+                {
+                    bd = AcessoBancoDados.GetInstance;
+                    bd.conectar();
+                    string comando = "delete from hospital where CNPJ =" + hospital.CNPJ;
+                    bd.ExecutarComandoSQL(comando);
+                    resultado = true;
+                }
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao excluir o cadastro do paciente! \n" +
+                MessageBox.Show("Erro ao excluir o cadastro do hospital! \n" +
                 Convert.ToString(ex), "Erro na operação de cancelamento!",
                 MessageBoxButtons.OK);
             }   // fim catch excluir
@@ -91,7 +101,7 @@ namespace Reserva_de_Leitos___Covi19.classes.bll
             bool resultado = false;
             try
             {
-                bd = new AcessoBancoDados();
+                bd = AcessoBancoDados.GetInstance;
                 bd.conectar();
                 string comando = "update hospital set NOME= '" + hospital.Nome + "', CNPJ= '" + hospital.CNPJ +
                                  "', Cidade_id= " + hospital.Cidade + " where Id = " + hospital.Codigo;

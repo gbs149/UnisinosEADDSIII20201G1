@@ -60,6 +60,12 @@ namespace Reserva_de_Leitos___Covi19.forms
         {
             try
             {
+                if (Hospital == null)
+                {
+                    MessageBox.Show("Você deve Buscar primeiramente um Hospital para realizar a Exclusão!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 bool retorno = false;
                 DialogResult result = MessageBox.Show("Deseja confirmar a exclusão deste cadastro de hospital? ",
                                                       "Confirmação de exclusão", MessageBoxButtons.OKCancel);
@@ -68,7 +74,7 @@ namespace Reserva_de_Leitos___Covi19.forms
                     if (edtCNPJ.Text != "")
                     {
                         string cnpj = edtCNPJ.Text;
-                        retorno = bll_cad_paciente.Excluir(cnpj);    // realiza a exclusão do cadastro do hospital
+                        retorno = bll_cad_hospital.Excluir(Hospital);    // realiza a exclusão do cadastro do hospital
                         LimparTela();
                     }
                 }
@@ -84,7 +90,7 @@ namespace Reserva_de_Leitos___Covi19.forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Convert.ToString(ex), "Erro na operação de cancelamento!",
+                MessageBox.Show(Convert.ToString(ex), "Erro na operação de exclusão!",
                                 MessageBoxButtons.OK);
             }   //
         }

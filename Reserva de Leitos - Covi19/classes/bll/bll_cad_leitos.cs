@@ -100,5 +100,29 @@ namespace Reserva_de_Leitos___Covi19.classes.bll
 
             return leito;
         }
+
+        public static bool VerificarLeitoHospital(int hospital)
+        {
+            bool resultado = false;
+            AcessoBancoDados bd;
+            try
+            {
+                bd = AcessoBancoDados.GetInstance;
+                bd.conectar();
+                string comando = $"Select * from leito Where Hospital_id = {hospital}";
+                var dtLeito = bd.RetDataTable(comando);
+                resultado = dtLeito.Rows.Count > 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao selecionar os leitos disponíveis! \n" +
+                Convert.ToString(ex), "Erro na operação de seleção!",
+                MessageBoxButtons.OK);
+            }
+
+            bd = null;
+
+            return resultado;
+        }
     }
 }
